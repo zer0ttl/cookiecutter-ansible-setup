@@ -376,15 +376,17 @@ EOF
 # File contents: ansible/inventories/production/host_vars/host1.yml
 cat <<EOF > ansible/inventories/production/host_vars/host1.yml
 ---
-# The variables file used by the playbooks for the host2 system.
+# The variables file used by the playbooks for the host1 system.
 # These don't have to be explicitly imported by vars_files: they are autopopulated.
 
 host_var1: host1_var1_value1
 host_var2: host1_var2_value2
 ansible_connection: local
+# ansible_host: 127.0.0.1
+# ansible_port: 8888
 EOF
 
-# File contents: ansible/inventories/production/host_vars/host1.yml
+# File contents: ansible/inventories/production/host_vars/host2.yml
 cat <<EOF > ansible/inventories/production/host_vars/host2.yml
 ---
 # The variables file used by the playbooks for the host2 system.
@@ -393,6 +395,8 @@ cat <<EOF > ansible/inventories/production/host_vars/host2.yml
 host_var1: host2_var1_value1
 host_var2: host2_var2_value2
 ansible_connection: local
+# ansible_host: 127.0.0.1
+# ansible_port: 5555
 EOF
 
 # -------------------------- STAGING GROUPVARS & HOSTVARS --------------------------------------
@@ -434,15 +438,17 @@ EOF
 # File contents: ansible/inventories/staging/host_vars/host1.yml
 cat <<EOF > ansible/inventories/staging/host_vars/host1.yml
 ---
-# The variables file used by the playbooks for the host2 system.
+# The variables file used by the playbooks for the host1 system.
 # These don't have to be explicitly imported by vars_files: they are autopopulated.
 
 host_var1: host1_var1_value1
 host_var2: host1_var2_value2
 ansible_connection: local
+# ansible_host: 127.0.0.1
+# ansible_port: 8888
 EOF
 
-# File contents: ansible/inventories/staging/host_vars/host1.yml
+# File contents: ansible/inventories/staging/host_vars/host2.yml
 cat <<EOF > ansible/inventories/staging/host_vars/host2.yml
 ---
 # The variables file used by the playbooks for the host2 system.
@@ -451,4 +457,6 @@ cat <<EOF > ansible/inventories/staging/host_vars/host2.yml
 host_var1: host2_var1_value1
 host_var2: host2_var2_value2
 ansible_connection: local
+# ansible_host: 127.0.0.1
+# ansible_port: 5555
 EOF
