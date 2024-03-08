@@ -1,4 +1,7 @@
 {
     "directory_name": "ansible",
-    "file_name": "main"
+    "file_name": "main",
+    "_copy_without_render": [
+        "*.yml"
+    ]
 }
