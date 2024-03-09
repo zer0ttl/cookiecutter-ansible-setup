@@ -64,7 +64,10 @@ cat <<EOF > ansible/playbook_group1.yml
   hosts: group1 # change this as required
   gather_facts: false # change this as required
   roles:
-    - { role: "my-role", tags: "my-tag" }
+    - role: my-role
+      tags: my-tag
+      vars:
+        play_var: play_var_value1
   vars:
     my_var: "{{ config.my_dict.key }}"
   tags:
@@ -83,7 +86,10 @@ cat <<EOF > ansible/playbook_group2.yml
   hosts: group2 # change this as required
   gather_facts: false # change this as required
   roles:
-    - { role: "my-role", tags: "my-tag" }
+    - role: my-role
+      tags: my-tag
+      vars:
+        play_var: play_var_value2
   vars:
     my_var: "{{ config.my_dict.key }}"
   tags:
@@ -316,8 +322,10 @@ cat <<EOF > ansible/roles/my-role/tasks/main.yml
 - name: Access and custom config vars on {{ inventory_hostname }}
   ansible.builtin.debug:
     msg:
-      - "my_var is of type: {{ my_var | type_debug }}"
-      - "my_var is        : {{ my_var }}"
+      - "my_var is of type  : {{ my_var | type_debug }}"
+      - "my_var is          : {{ my_var }}"
+      - "play_var is of type: {{ play_var | type_debug }}"
+      - "play_var is        : {{ play_var }}"
   tags: my-tag2
 
 - name: Access default role vars on {{ inventory_hostname }}
