@@ -20,8 +20,10 @@
 - name: Access and custom config vars on {{ inventory_hostname }}
   ansible.builtin.debug:
     msg:
-      - "my_var is of type: {{ my_var | type_debug }}"
-      - "my_var is        : {{ my_var }}"
+      - "my_var is of type  : {{ my_var | type_debug }}"
+      - "my_var is          : {{ my_var }}"
+      - "play_var is of type: {{ play_var | type_debug }}"
+      - "play_var is        : {{ play_var }}"
   tags: my-tag2
 
 - name: Access default role vars on {{ inventory_hostname }}
